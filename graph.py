@@ -26,16 +26,29 @@ class Graph:
     def __contains__(self, item):
         return item in self.node
 
-    def add_edg(self, start: str, end: str, weight: int = 0):
+    def add_edg(self, start: str, end: str = None, weight: int = 1):
         """
         add edg to graph
         """
-        self.graph.setdefault(start, []).append({end: weight})
-        self.node.add(end)
+        if end is None:
+            self.graph.setdefault(start, [])
+        else:
+            self.graph.setdefault(start, []).append({end: weight})
+            self.node.add(end)
         self.node.add(start)
 
     def deg(self, node):
         return len(self.graph[node])
+
+    def isolated(self):
+        node_name = []
+        for i in self.graph:
+            if len(self.graph[i]) == 0:
+                node_name.append(i)
+        return node_name
+
+    def is_isolated(self, node):
+        return self.deg(node) == 0
 
 
 # %% code
