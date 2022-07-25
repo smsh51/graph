@@ -11,20 +11,37 @@ class Graph:
     """all ploblem in graph"""
     def __init__(self):
         self.graph = {}
+        self.node = set()
 
     def __str__(self):
-        return str(list(self.graph))
+        message = ''
+        for key in list(self.graph):
+            for val in self.graph[key]:
+                message += '{start}, {end} \n'.format(start=key, end=val)
+        return message.translate({ord(i): None for i in "{'}"})
 
     def __len__(self):
         return self.graph.__len__()
 
+    def __contains__(self, item):
+        return item in self.node
+
     def add_edg(self, start: str, end: str, weight: int = 0):
-        self.graph.setdefault(start, []).append({}.setdefault(end, weight))
+        """
+        add edg to graph
+        """
+        self.graph.setdefault(start, []).append({end: weight})
+        self.node.add(end)
+        self.node.add(start)
+
+    def first_path(self, origin, goal):
+        """found first path"""
+        print(self.graph)
 
 
 # %% code
 self = Graph()
-self.add_edg('A', 'c')
+self.add_edg(start='A', end='c')
 self.add_edg('A', 'b')
 self.add_edg('b', 'c')
 self.add_edg('b', 'd')
