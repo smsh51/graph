@@ -34,9 +34,8 @@ class Graph:
         self.node.add(end)
         self.node.add(start)
 
-    def first_path(self, origin, goal):
-        """found first path"""
-        print(self.graph)
+    def deg(self, node):
+        return len(self.graph[node])
 
 
 # %% code
