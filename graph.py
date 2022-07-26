@@ -5,6 +5,14 @@ Created on Sun Jul 24 22:06:21 2022
 @author: Hazavei
 """
 
+__author__ = "Seed mohamad saeed hazavehei"
+__copyright__ = "Copyright 2022, The Cogent Project"
+__credits__ = ["SmS.hZ"]
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "atpy"
+__email__ = "saeed.hazavehei@gmail.com"
+__status__ = "science"
 
 # %% graph
 class Graph:
