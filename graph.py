@@ -38,11 +38,15 @@ class Graph:
             self.graph.setdefault(start, []).append({end: weight})
             self.node.add(end)
             self.node.add(start)
+        else:
+            raise Exception('can not add NoneType edg')
 
     def add_node(self, node: str):
         if node is not None:
             self.graph.setdefault(node, [])
             self.node.add(node)
+        else:
+            raise Exception('can not add NoneType node')
 
     def remove_node(self, node):
         if node is not None:
@@ -51,6 +55,8 @@ class Graph:
                 self.node.remove(node)
             except:
                 raise Exception('node not found')
+        else:
+            raise Exception('can not remove NoneType')
 
     def remove_edg(self, start: str, end: str, weight: int):
         if (start is not None) and (end is not None):
@@ -58,6 +64,8 @@ class Graph:
                 self.graph[start].remove({end, weight})
             except:
                 raise Exception('start or end node not found')
+        else:
+            raise Exception('can not remove NoneType')
 
     def deg(self, node):
         return len(self.graph[node])
