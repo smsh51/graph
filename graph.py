@@ -42,13 +42,19 @@ class Graph:
             raise Exception('can not add NoneType edg')
 
     def add_node(self, node: str):
+        """
+        add node to graph
+        """
         if node is not None:
             self.graph.setdefault(node, [])
             self.node.add(node)
         else:
             raise Exception('can not add NoneType node')
 
-    def remove_node(self, node):
+    def remove_node(self, node: str):
+        """
+        remove node from graph
+        """
         if node is not None:
             try:
                 self.graph.pop(node)
@@ -59,6 +65,9 @@ class Graph:
             raise Exception('can not remove NoneType')
 
     def remove_edg(self, start: str, end: str, weight: int):
+        """
+        remove edg from graph
+        """
         if (start is not None) and (end is not None):
             try:
                 self.graph[start].remove({end, weight})
@@ -67,17 +76,26 @@ class Graph:
         else:
             raise Exception('can not remove NoneType')
 
-    def deg(self, node):
+    def deg(self, node: str):
+        """
+        calculate node degree
+        """
         return len(self.graph[node])
 
     def isolated(self):
+        """
+        calculate isolated graph
+        """
         node_name = []
         for i in self.graph:
             if len(self.graph[i]) == 0:
                 node_name.append(i)
         return node_name
 
-    def is_isolated(self, node):
+    def is_isolated(self, node: str):
+        """
+        calculate isolated node
+        """
         return self.deg(node) == 0
 
 
