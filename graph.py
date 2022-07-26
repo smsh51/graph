@@ -8,10 +8,14 @@ Created on Sun Jul 24 22:06:21 2022
 
 # %% graph
 class Graph:
-    """all ploblem in graph"""
+    """all problem in graph"""
     def __init__(self):
         self.graph = {}
         self.node = set()
+
+    def hi(self): ...
+    def __eq__(self, other): ...
+    def __add__(self, other): ...
 
     def __str__(self):
         message = ''
@@ -26,16 +30,34 @@ class Graph:
     def __contains__(self, item):
         return item in self.node
 
-    def add_edg(self, start: str, end: str = None, weight: int = 1):
+    def add_edg(self, start: str, end: str, weight: int = 1):
         """
         add edg to graph
         """
-        if end is None:
-            self.graph.setdefault(start, [])
-        else:
+        if (end is not None) and (start is not None):
             self.graph.setdefault(start, []).append({end: weight})
             self.node.add(end)
-        self.node.add(start)
+            self.node.add(start)
+
+    def add_node(self, node: str):
+        if node is not None:
+            self.graph.setdefault(node, [])
+            self.node.add(node)
+
+    def remove_node(self, node):
+        if node is not None:
+            try:
+                self.graph.pop(node)
+                self.node.remove(node)
+            except:
+                raise Exception('node not found')
+
+    def remove_edg(self, start: str, end: str, weight: int):
+        if (start is not None) and (end is not None):
+            try:
+                self.graph[start].remove({end, weight})
+            except:
+                raise Exception('start or end node not found')
 
     def deg(self, node):
         return len(self.graph[node])
