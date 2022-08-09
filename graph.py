@@ -14,9 +14,11 @@ __maintainer__ = "atpy"
 __email__ = "saeed.hazavehei@gmail.com"
 __status__ = "science"
 
+
 # %% graph
 class Graph:
     """all problem in graph"""
+
     def __init__(self):
         self.graph = {}
         self.node = set()
@@ -67,7 +69,7 @@ class Graph:
             try:
                 self.graph.pop(node)
                 self.node.remove(node)
-            except:
+            except ValueError:
                 raise Exception('node not found')
         else:
             raise Exception('can not remove NoneType')
@@ -79,7 +81,7 @@ class Graph:
         if (start is not None) and (end is not None):
             try:
                 self.graph[start].remove({end, weight})
-            except:
+            except ValueError:
                 raise Exception('start or end node not found')
         else:
             raise Exception('can not remove NoneType')
