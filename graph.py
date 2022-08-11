@@ -122,6 +122,14 @@ class Graph:
             if self.degree(i) == 1:
                 node_name.append(i)
         return node_name
+    def degree_sequence(self):
+        """
+        A sequence of degrees of graph nodes
+        """
+        node_name = []
+        for i in self.graph:
+            node_name.append(self.degree(i))
+        return sorted(node_name, reverse=True)
 
 
 # %% code
