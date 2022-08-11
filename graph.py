@@ -5,7 +5,7 @@ Created on Sun Jul 24 22:06:21 2022
 @author: Hazavei
 """
 
-__author__ = "Seed mohamad saeed hazavehei"
+__author__ = "Sayyed mohammad saeed hazavehei"
 __copyright__ = "Copyright 2022, The Cogent Project"
 __credits__ = ["SmS.hZ"]
 __license__ = "GPL"
@@ -17,7 +17,9 @@ __status__ = "science"
 
 # %% graph
 class Graph:
-    """all problem in graph"""
+    """
+    all problem in graph
+    """
 
     def __init__(self):
         self.graph = {}
@@ -45,6 +47,9 @@ class Graph:
         add edg to graph
         """
         if (end is not None) and (start is not None):
+            if (start == end) and (weight == 1):
+                weight = 2
+
             self.graph.setdefault(start, []).append({end: weight})
             self.node.add(end)
             self.node.add(start)
@@ -86,7 +91,7 @@ class Graph:
         else:
             raise Exception('can not remove NoneType')
 
-    def deg(self, node: str):
+    def degree(self, node: str):
         """
         calculate node degree
         """
@@ -98,15 +103,25 @@ class Graph:
         """
         node_name = []
         for i in self.graph:
-            if len(self.graph[i]) == 0:
+            if self.degree(i) == 0:
                 node_name.append(i)
         return node_name
 
-    def is_isolated(self, node: str):
+    def is_isolated(self, node: str) -> bool:
         """
         calculate isolated node
         """
-        return self.deg(node) == 0
+        return self.degree(node) == 0
+
+    def pendant(self) -> list:
+        """
+        pendant is a list of node whose degree is one
+        """
+        node_name = []
+        for i in self.graph:
+            if self.degree(i) == 1:
+                node_name.append(i)
+        return node_name
 
 
 # %% code
