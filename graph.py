@@ -147,6 +147,11 @@ class Graph:
         """
         return sum(self.degree_sequence())
 
+    def is_valid(self):
+        """
+        can crate graph by degree sequence
+        """
+        return self.quantity_edg() % 2 == 0
 
 
 # %% code
