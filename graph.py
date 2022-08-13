@@ -153,6 +153,13 @@ class Graph:
         """
         return self.quantity_edg() % 2 == 0
 
+    def graphic_sequence(self):
+        """
+        create simple graph by degree sequence
+        """
+
+    # TODO : add method 2-switch
+
 
 # %% code
 self = Graph()
