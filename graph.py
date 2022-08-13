@@ -141,6 +141,14 @@ class Graph:
             return degree[0]
         return False
 
+    def quantity_edg(self):
+        """
+        quantity of edges
+        """
+        return sum(self.degree_sequence())
+
+
+
 # %% code
 self = Graph()
 self.add_edg(start='A', end='c')
