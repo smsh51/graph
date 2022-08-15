@@ -157,8 +157,20 @@ class Graph:
         """
         create simple graph by degree sequence
         """
+        d = self.degree_sequence()
+        for i in range(len(d)):
+            if d[0] == 0:
+                return True
+            elif d[-1] < 0:
+                return False
+            else:
+                for j in range(len(d)):
+                    d[j] -= 1
+                d.sort()
 
     # TODO : add method 2-switch
+    # TODO : sum degree sequence (2m)
+    # TODO : mean degree sequence (2m/n)
 
 
 # %% code
