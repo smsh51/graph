@@ -42,9 +42,9 @@ class Graph:
     def __contains__(self, item):
         return item in self.node
 
-    def add_edg(self, start: str, end: str, weight: int = 1):
+    def add_edges(self, start: str, end: str, weight: int = 1):
         """
-        add edg to graph
+        add edges to graph
         """
         if (end is not None) and (start is not None):
             if (start == end) and (weight == 1):
@@ -54,7 +54,7 @@ class Graph:
             self.node.add(end)
             self.node.add(start)
         else:
-            raise Exception('can not add NoneType edg')
+            raise Exception('can not add NoneType edges')
 
     def add_node(self, node: str):
         """
@@ -79,9 +79,9 @@ class Graph:
         else:
             raise Exception('can not remove NoneType')
 
-    def remove_edg(self, start: str, end: str, weight: int):
+    def remove_edges(self, start: str, end: str, weight: int):
         """
-        remove edg from graph
+        remove edges from graph
         """
         if (start is not None) and (end is not None):
             try:
@@ -141,7 +141,7 @@ class Graph:
             return degree[0]
         return False
 
-    def quantity_edg(self):
+    def quantity_edges(self):
         """
         quantity of edges
         """
@@ -151,7 +151,7 @@ class Graph:
         """
         can crate graph by degree sequence
         """
-        return self.quantity_edg() % 2 == 0
+        return self.quantity_edges() % 2 == 0
 
     def graphic_sequence(self):
         """
@@ -163,10 +163,10 @@ class Graph:
 
 # %% code
 self = Graph()
-self.add_edg(start='A', end='c')
-self.add_edg('A', 'b')
-self.add_edg('b', 'c')
-self.add_edg('b', 'd')
-self.add_edg('d', 'c')
+self.add_edges(start='A', end='c')
+self.add_edges('A', 'b')
+self.add_edges('b', 'c')
+self.add_edges('b', 'd')
+self.add_edges('d', 'c')
 
 print(self)
